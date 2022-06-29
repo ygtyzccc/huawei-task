@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "e7017200-ff1f-484b-a32e-1bafedf3eb92",
+		"name": "Huawei Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5244935"
+	},
+	"item": [
+		{
+			"name": "park-area-controller",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kadıköy\",\r\n    \"capacity\": 2000,\r\n    \"city\": \"İstanbul\",\r\n    \"priceLists\": [\r\n        {\r\n            \"startHour\": 0,\r\n            \"endHour\": 2,\r\n            \"price\": 10\r\n        },\r\n        {\r\n            \"startHour\": 2,\r\n            \"endHour\": 4,\r\n            \"price\": 12\r\n        },\r\n        {\r\n            \"startHour\": 4,\r\n            \"endHour\": 8,\r\n            \"price\": 15\r\n        },\r\n        {\r\n            \"startHour\": 8,\r\n            \"endHour\": 14,\r\n            \"price\": 17\r\n        },\r\n        {\r\n            \"startHour\": 14,\r\n            \"endHour\": 24,\r\n            \"price\": 20\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parking-area",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-area"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fikirtepe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parking-area/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-area",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-area/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-area",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-area/?name=Kadıköy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-area",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Kadıköy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "income",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-area/income?name=Kadıköy&date=26-06-2022",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-area",
+								"income"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Kadıköy"
+								},
+								{
+									"key": "date",
+									"value": "26-06-2022"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "park-controller",
+			"item": [
+				{
+					"name": "checkIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"parkingAreaId\": 1,\r\n    \"checkInDate\": \"2022-06-26T02:39:00\",\r\n    \"vehicle\": {\r\n        \"licensePlate\": \"16 HBC 77\",\r\n        \"type\": \"SEDAN\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/park/check-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"park",
+								"check-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkOut",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"parkingAreaId\": 1,\r\n    \"checkOutDate\": \"2022-06-26T04:00:00\",\r\n    \"vehicle\": {\r\n        \"licensePlate\": \"16 HBC 77\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/park/check-out",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"park",
+								"check-out"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vehicle-controller",
+			"item": [
+				{
+					"name": "getParkingDetails",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/vehicle?licensePlate=16 HBC 77",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle"
+							],
+							"query": [
+								{
+									"key": "licensePlate",
+									"value": "16 HBC 77"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
